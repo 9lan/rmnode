@@ -9,6 +9,8 @@ import (
 func main() {
 	args := os.Args[1:]
 
+	version := getVersion()
+
 	if len(args) == 0 {
 		fmt.Println("Please provide an argument")
 		fmt.Println("Usage: rmnode [list -ls --list|delete -d --delete]")
@@ -21,6 +23,7 @@ func main() {
 	case "delete", "-d", "--delete":
 		deleteAllNodeModules()
 	case "help", "-h", "--help":
+		fmt.Println("rmnode version", version)
 		fmt.Println("Usage: rmnode [list -ls --list|delete -d --delete]")
 	default:
 		fmt.Println("Please provide a valid argument")
@@ -74,4 +77,8 @@ func deleteAllNodeModules() {
 		fmt.Println(err)
 		return
 	}
+}
+
+func getVersion() string {
+	return "1.0.0"
 }
